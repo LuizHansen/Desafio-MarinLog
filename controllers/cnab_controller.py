@@ -9,8 +9,8 @@ class CnabController:
         except Exception:
             return {"mensagem": "errou"}
 
-    async def controller_post_cnab(conteudo_arquivo):
+    async def controller_post_cnab(self, conteudo_arquivo):
         try:
-            return await CnabService().sevice_post_cnab(conteudo_arquivo)
-        except Exception:
-            return {"mensagem": "errou"}
+            return await CnabService().service_post_cnab(conteudo_arquivo)
+        except Exception as e:
+            return {"mensagem": e}
