@@ -1,8 +1,8 @@
 from database.schemas.cnab_schemas import CnabSchema
+from typings.cnab_typings import CnabModel
 import db
 
 session = db.Session()
-
 
 async def model_get_cnab():
     return session.query(CnabSchema).all()
