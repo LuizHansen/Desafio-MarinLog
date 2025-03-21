@@ -9,7 +9,15 @@ class CnabModel:
     async def model_get_cnab():
         return session.query(CnabSchema).all()
 
-    async def model_post_cnab(self, dados_arquivo: CnabSchema):
-        novo_cnab = CnabSchema(**dados_arquivo.model_dump())
-        session.add(novo_cnab)
-        return {"Mensagem": f"Cnab cadastrado com sucesso: {novo_cnab.id_transacao}"}
+    async def model_post_cnab(self, dados_arquivo: list[CnabTyping]):
+        try:
+            for cnab_obj in dados_arquivo:
+                novo_cnab = CnabSchema(**cnab_obj.model_dump())
+                session.add(novo_cnab)
+
+            session.commit()
+            return {"Mensagem": f"{len(dados_arquivo)} registros CNAB cadastrados com sucesso!"}
+
+        except Exception as e:
+            session.rollback()
+            return {"error": f"Erro ao inserir no banco de dados: {str(e)}"}
