@@ -4,10 +4,12 @@ import db
 
 session = db.Session()
 
-async def model_get_cnab():
-    return session.query(CnabSchema).all()
+class CnabModel:
 
-async def model_post_cnab(corpo: CnabSchema):
-    novo_cnab = CnabSchema(**corpo.model_dump())
-    session.add(novo_cnab)
-    return {"Mensagem": f"Cnab cadastrado com sucesso: {novo_cnab.id_transacao}"}
+    async def model_get_cnab():
+        return session.query(CnabSchema).all()
+
+    async def model_post_cnab(dados_arquivo: CnabSchema):
+        novo_cnab = CnabSchema(**dados_arquivo.model_dump())
+        session.add(novo_cnab)
+        return {"Mensagem": f"Cnab cadastrado com sucesso: {novo_cnab.id_transacao}"}
