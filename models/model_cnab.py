@@ -6,7 +6,7 @@ session = db.SessionLocal()
 
 class CnabModel:
 
-    async def model_get_cnab():
+    async def model_get_cnab(self): 
         return session.query(CnabSchema).all()
 
     async def model_post_cnab(self, dados_arquivo: list[CnabTyping]):
