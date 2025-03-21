@@ -6,8 +6,8 @@ from models.model_cnab import CnabModel
 
 class CnabService:
 
-    async def service_get_cnab():
-        return
+    async def service_get_cnab(self):
+        return await CnabModel().model_get_cnab()
 
     async def service_post_cnab(self, conteudo_arquivo):
         conteudo_arquivo = conteudo_arquivo.decode("utf-8")
