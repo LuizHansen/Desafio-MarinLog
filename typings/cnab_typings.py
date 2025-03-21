@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class CnabModel(BaseModel):
+class CnabTyping(BaseModel):
     id_transacao: Optional[int] = None
     tipo_transacao: int
     data_transacao: int
