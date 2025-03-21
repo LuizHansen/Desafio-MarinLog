@@ -1,7 +1,7 @@
 from sqlalchemy import String, Column, Integer
 from db import Base
 
-class cnab_schema(Base):
+class CnabSchema(Base):
     __tablename__ = 'tb_transacoes'
 
     id_transacao = Column(Integer, primary_key = True, autoincrement = True, index = True)
