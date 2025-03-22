@@ -12,4 +12,4 @@ app.include_router(cnab_router)
 cria_tabelas()
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host=HOST, port=int(PORT), reload=RELOAD)
+    uvicorn.run("server.main:app", host=HOST, port=int(PORT), reload=RELOAD)
