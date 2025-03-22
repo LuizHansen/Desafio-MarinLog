@@ -23,18 +23,36 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Erro ao enviar arquivo:", error));
     });
 
+    const tiposOperacao = {
+        1: { descricao: "Débito", valor: 1 },
+        2: { descricao: "Boleto", valor: -1 },
+        3: { descricao: "Financiamento", valor: -1 },
+        4: { descricao: "Crédito", valor: 1 },
+        5: { descricao: "Recebimento Empréstimo", valor: 1 },
+        6: { descricao: "Vendas", valor: 1 },
+        7: { descricao: "Recebimento TED", valor: 1 },
+        8: { descricao: "Recebimento DOC", valor: 1 },
+        9: { descricao: "Aluguel", valor: -1 }
+    };
+    
     // Função para carregar transações da API
     function consultar_cnab() {
         fetch("http://127.0.0.1:8000/cnab/consultar_cnab")
             .then(response => response.json())
             .then(data => {
                 const tabela = document.getElementById("transacoes");
-                tabela.innerHTML = ""; // Limpa a tabela antes de preencher
-
+                const saldoElement = document.getElementById("saldo");
+                tabela.innerHTML = ""; // Limpa a tabela
+                let saldo = 0;
+    
                 data.forEach(transacao => {
+                    const tipo = tiposOperacao[transacao.tipo_transacao] || { descricao: "Desconhecido", valor: 0 };
+                    const valor = transacao.valor_transacao * tipo.valor; // Ajusta o valor conforme o tipo
+                    saldo += valor;
+    
                     const row = document.createElement("tr");
                     row.innerHTML = `
-                        <td>${transacao.tipo_transacao}</td>
+                        <td>${tipo.descricao}</td>
                         <td>${transacao.data_transacao}</td>
                         <td>R$ ${transacao.valor_transacao.toFixed(2)}</td>
                         <td>${transacao.cpf_transacao}</td>
@@ -45,8 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     `;
                     tabela.appendChild(row);
                 });
+    
+                saldoElement.innerText = `Saldo Total: R$ ${saldo.toFixed(2)}`;
             })
             .catch(error => console.error("Erro ao carregar transações:", error));
     }
+    
 
 });
