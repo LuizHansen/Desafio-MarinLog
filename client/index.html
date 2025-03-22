@@ -1,0 +1,36 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio e Consulta CNAB</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Processador de Arquivo CNAB</h1>
+    
+    <!-- Formulário de Envio -->
+    <form id="uploadForm">
+        <input type="file" id="fileInput" accept=".txt" required>
+        <button type="submit">Enviar Arquivo</button>
+    </form>
+    
+    <h2>Transações Processadas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Data</th>
+                <th>Valor</th>
+                <th>CPF</th>
+                <th>Cartão</th>
+                <th>Hora</th>
+                <th>Dono</th>
+                <th>Loja</th>
+            </tr>
+        </thead>
+        <tbody id="transacoes"></tbody>
+    </table>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
