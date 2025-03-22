@@ -88,6 +88,9 @@ cd client
 python -m http.server 8000
 ```
 3️⃣ Acesse: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+## 🔗 Links do Projeto
+- **Frontend Online**: [https://desafio-marin-log.vercel.app](https://desafio-marin-log.vercel.app)
+- **Repositório GitHub**: [https://github.com/LuizHansen/Desafio-MarinLog](https://github.com/LuizHansen/Desafio-MarinLog)
 
 ---
 
