@@ -1,0 +1,2 @@
+[scripts]
+dev = "uvicorn server.main:app --reload"

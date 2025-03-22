@@ -1,7 +1,9 @@
 from dotenv import load_dotenv, find_dotenv
 import os
+import pymssql 
 
-dotenv_file = find_dotenv()
+dotenv_file = find_dotenv(usecwd=True)
+dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
 # Carrega o arquivo .env
 load_dotenv(dotenv_file)
 
@@ -18,5 +20,4 @@ DB_HOST = os.getenv("DB_HOST")
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASS")
 
-import pymssql 
 SQLALCHEMY_DATABASE_URL = f"mssql+pymssql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}"
