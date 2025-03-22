@@ -16,7 +16,7 @@ class CnabModel:
                 session.add(novo_cnab)
 
             session.commit()
-            return {"Mensagem": f"{len(dados_arquivo)} registros CNAB cadastrados com sucesso!"}
+            return {"mensagem": f"{len(dados_arquivo)} registros CNAB cadastrados com sucesso!"}
 
         except Exception as e:
             session.rollback()
